@@ -1,5 +1,5 @@
 module.exports = {
     env: {
-        MONGO_URI: "mongodb+srv://madhurjya:AE7mKudlQ4n0t0uw@cluster0.ltqzt.mongodb.net/test?retryWrites=true&w=majority"
+        MONGO_URI: "here put your mongodb connection URI with your username and password"
     }
 }

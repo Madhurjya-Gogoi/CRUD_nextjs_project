@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import {useRouter} from "next/router"
+import { useUser } from '@auth0/nextjs-auth0';
 
 const New = () => {
-    const [form, setform] = useState({ title: "", description: "" })
-    const route = useRouter()
-
+    const { user} = useUser();
+    const [form, setform] = useState({ title: "", description: "", email: user?.email })
+    const route = useRouter()  
     const handleChange = (e) => {
         setform({
             ...form,
@@ -32,13 +33,13 @@ const New = () => {
     return (
         <div className="container mt-3">
             <form>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Title</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" name="title" onChange={handleChange} />
+                <div className="mb-3">
+                    <label for="exampleFormControlInput1" clasNames="form-label">Title</label>
+                    <input type="email" className="form-control" id="exampleFormControlInput1" name="title" onChange={handleChange} />
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" onChange={handleChange}></textarea>
+                <div className="mb-3">
+                    <label for="exampleFormControlTextarea1" className="form-label">Description</label>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="description" onChange={handleChange}></textarea>
                 </div>
                 <button onClick={formSubmit} className="btn btn-primary btn-lg">Create</button>
             </form>

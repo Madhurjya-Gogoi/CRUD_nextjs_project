@@ -1,10 +1,8 @@
 import Link from "next/link"
 import { useUser } from '@auth0/nextjs-auth0';
-import Image from 'next/image'
 
 const Navbar = () => {
   const { user, error, isLoading } = useUser();
- 
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
 

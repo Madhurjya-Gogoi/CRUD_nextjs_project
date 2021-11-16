@@ -1,33 +1,17 @@
 import Link from "next/link"
 import { useUser } from '@auth0/nextjs-auth0';
 import Login from "../components/Login";
-// import { useEffect, useState } from "react";
 
-var email;
-const index = ({Note}) => {
+const index = ({notes}) => {
     const { user} = useUser();
-    // email = "mousamgogoi630@gmail.com";
-    // const [Note, setNote] = useState([])
-    // console.log(Note)
-    // const handleFtetch = async()=>{
-    //     const res = await fetch(`http://localhost:3000/api/note`);
-    //     const { data } = await res.json();
-    //     setNote([
-    //         ...Note,
-    //         data
-    //     ])
-    // }
-    // useEffect(() => {
-    //     handleFtetch()
-    // }, [])
     return (
-        <div className="container-fluid bg-light mt-2">
+        <div className="container-fluid bg-light ">
             {
                 user ? <div className="container">
                     <h2 className="text-center fs-4 text-danger">Your Note</h2>
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {
-                            Note.map(note => {
+                            notes.map(note => {
                                 return (
                                     <div className="col" key={note._id}>
                                         <div className="card border border-danger" >
@@ -57,7 +41,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            Note: data
+            notes: data
         }
     }
 }
